@@ -7,6 +7,6 @@ During the dynamics, we focused on locating a spanning or percolating clusters i
 
 This code is a whole process of how the stochastic dynamics of the network is simulated in Python.
 
-
-SL_gamma_redistribution_bond_UpDown_or_LeftRight.py is the main program that simulates the dynamic process.
+##
+SL_gamma_redistribution_bond_UpDown_or_LeftRight.py is the main script that simulates the dynamic process.
 
