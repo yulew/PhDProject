@@ -6,3 +6,7 @@ My PhD project is to study fracture (crack) dynamics on a polymer network. The p
 During the dynamics, we focused on locating a spanning or percolating clusters in the network. This is solved by implementing an efficient tree-based algorithm. 
 
 This code is a whole process of how the stochastic dynamics of the network is simulated in Python.
+
+
+SL_gamma_redistribution_bond_UpDown_or_LeftRight.py is the main program that simulates the dynamic process.
+
