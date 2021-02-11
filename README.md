@@ -24,7 +24,7 @@ What is a percolation theory? It is a theory that you want to find the probabili
 
 ##
 What is a (rejection-free) kinetic Monte Carlo simulation method? It is a random sampling method, but the next event is dependent on its current state. The below describe the simulation process of the fracture dynamics!
-<div align=center><img width="550" height="550" src="https://github.com/yulew/PhDProject/blob/main/imgs/Monte_Carlo.png">
+<div align=center><img width="550" height="500" src="https://github.com/yulew/PhDProject/blob/main/imgs/Monte_Carlo.png">
 
 ##
 Check out the animation of the dynamic process!
