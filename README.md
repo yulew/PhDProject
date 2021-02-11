@@ -30,7 +30,7 @@ Check out the animation of the dynamic process!
 
 A low correlated fracture system:
 
-[![Alt text for your video](doc/screenshot_youtube.PNG)](https://www.youtube.com/watch?v=VIDEO-ID "Put hover text here!")
+[![Alt text for your video](doc/screenshot_youtube.PNG)](https://www.youtube.com/watch?v=5EEM__L612Y "Put hover text here!")
 
 ##
 
