@@ -26,5 +26,13 @@ What is a (rejection-free) kinetic Monte Carlo simulation method? It is a random
 <div align=center><img width="550" height="550" src="https://github.com/yulew/PhDProject/blob/main/imgs/Monte_Carlo.png">
 
 ##
+Check out the animation of the dynamic process!
+
+A low correlated fracture system:
+
+[![Alt text for your video](doc/screenshot_youtube.PNG)](https://www.youtube.com/watch?v=VIDEO-ID "Put hover text here!")
+
+##
+
 SL_gamma_redistribution_bond_UpDown_or_LeftRight.py is the main script that simulates the dynamic process.
 
