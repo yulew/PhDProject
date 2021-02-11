@@ -27,12 +27,14 @@ What is a (rejection-free) kinetic Monte Carlo simulation method? It is a random
 <div align=center><img width="550" height="500" src="https://github.com/yulew/PhDProject/blob/main/imgs/Monte_Carlo.png">
 
 ##
-Check out the animation of the dynamic process!
+Check out the animations of the dynamic process of the polymer network!
 
-A low correlated fracture process, more randomly: https://github.com/yulew/PhDProject/blob/main/Animations/animation_perco_low_corr.mp4
+An example of a low correlated fracture dynamics system, more randomly: https://github.com/yulew/PhDProject/blob/main/Animations/animation_perco_low_corr.mp4
 
-A highly correlated fracture process, the large "accumulating" crack starts so early: 
+An example of a highly correlated dynamics system, the large "accumulating" crack starts so early: 
 https://github.com/yulew/PhDProject/blob/main/Animations/animation_high_corr.mp4
+
+But you should know, even for a completely same initial condition, the random dynamic processes can be completely different.
 
 
 ##
