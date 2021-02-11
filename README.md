@@ -3,7 +3,7 @@
 
 My PhD project targeted studying fracture (crack) dynamics on a polymer network. A reader can find my article (https://journals.aps.org/pre/abstract/10.1103/PhysRevE.101.042603) and my thesis in this repository to have a general understanding.
 
-The practical goal was to predict the lifetime of the polymer network, but as it can be modelled on a random network, this is basically a mathematical random graph problem that can be used to predict the lifetime of a given network. 
+The practical goal was to predict the lifetime of the polymer network. But as the fractures on a polymer network is a random network problem, the dynamics can be mapped to a mathematical random graph.
 
 
 As the random fracture process is a Markov process, the dynamical process is numerically simulated in Python and implemented with a kinetic Monte Carlo method.
