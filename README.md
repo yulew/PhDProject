@@ -12,7 +12,7 @@ During the dynamics, we focused on locating a spanning (or percolating) cluster 
 
 This program was created by me in Python to simulate a whole random dynamic process. But remember, as a one probable process is only one possible copy. I have to simulate many copies for each set of parameters.
 
-33
+##
 
 #### What is fracture dynamics on polymer networks? How do I map the dynamics of the polymer networks onto a random graph problem? What is a percolating cluster? Look at the below image!
 ![image](https://github.com/yulew/PhDProject/blob/main/imgs/Mapping.png)
