@@ -10,6 +10,8 @@ As the random fracture process is a Markov process also, in which the random fra
 
 During the dynamics, we focused on locating a spanning (or percolating) cluster in the network. This is again a math problem called percolation theory. In a numerical simulation, we can let the computer or the program identify such percolating cluster by an efficient tree-based algorithm by Newman (https://link.aps.org/doi/10.1103/PhysRevE.64.016706). 
 
+#### What is fractures on polymer networks? How do we map the dynamics of the polymer networks onto a mathematical, random graph problem? What is a percolating cluster? Look at the below image!
+
 This program was created by me in Python to simulate a whole random dynamic process. But remember, as a one probable process is only one possible copy. I have to simulate many copies for each set of parameters.
 
 ##
