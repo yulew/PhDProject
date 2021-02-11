@@ -15,6 +15,7 @@ I created this program in Python to simulate a whole random dynamic process. But
 ##
 
 What is fracture dynamics on polymer networks? How do I map the dynamics of the polymer networks onto a random graph problem? What is a percolating cluster? Check out the below image!
+
 ![image](https://github.com/yulew/PhDProject/blob/main/imgs/Mapping.png)
 
 ##
@@ -28,7 +29,9 @@ What is a (rejection-free) kinetic Monte Carlo simulation method? It is a random
 ##
 Check out the animation of the dynamic process!
 
-A low correlated fracture system:
+A low correlated fracture process, more randomly: https://github.com/yulew/PhDProject/blob/main/
+
+A highly correlated fracture process, the large "accumulating" crack starts so early!
 
 [![Alt text for your video](doc/screenshot_youtube.PNG)](https://www.youtube.com/watch?v=5EEM__L612Y "Put hover text here!")
 
