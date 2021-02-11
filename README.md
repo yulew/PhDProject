@@ -6,7 +6,7 @@ My PhD project targeted studying fracture (crack) dynamics on a polymer network.
 The practical goal was to predict the lifetime of the polymer network. But as the fractures on a polymer network is a random network problem, the physical dynamics can be mapped to a mathematical random graph.
 
 
-As the random fracture process is a Markov process, the dynamical process is numerically simulated in Python and implemented with a kinetic Monte Carlo method.
+As the random fracture process is a Markov process also, in which the random fracture events exhibit correlations. Thus, the dynamical process is numerically simulated in Python and implemented with a kinetic Monte Carlo method.
 
 During the dynamics, we focused on locating a spanning (or percolating) cluster in the network. This can be solved by implementing a tree-based algorithm by Newman for efficiency (https://link.aps.org/doi/10.1103/PhysRevE.64.016706). 
 
