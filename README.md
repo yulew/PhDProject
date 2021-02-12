@@ -30,7 +30,7 @@ What is a (rejection-free) kinetic Monte Carlo simulation method? It is a random
 ##
 Check out the animations of the dynamic process of the polymer network!
 
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://www.youtube.com/watch?v=4sydusJJZJE)
+[![Fibonacci RMI Java EE](http://img.youtube.com/vi/nX_inqaAzOI/0.jpg)](https://www.youtube.com/watch?v=nX_inqaAzOI&feature=youtu.be&hd=1 "RMI Fibonacci Java")
 
 An example of a low correlated fracture dynamics system, more randomly: https://github.com/yulew/PhDProject/blob/main/Animations/animation_perco_low_corr.mp4
 
