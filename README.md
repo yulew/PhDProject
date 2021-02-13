@@ -6,11 +6,11 @@ My PhD project targeted studying fracture (crack) dynamics on a polymer network.
 The practical goal of the project is to forcast the lifetime of polymer networks. But as the fractures on a polymer network is a random network problem, the physical dynamics can be mapped to a mathematical random graph.
 
 
-As the random fracture process is a Markov process also, in which the random fracture events exhibit correlations in the time-series processes. Thus, the fracture dynamics were numerically simulated with a kinetic Monte Carlo method in Python.
+As the random fracture process is a Markov process also, in which the random fracture events exhibit correlations in the time-series processes. Thus, the fracture dynamics can be numerically simulated with a kinetic Monte Carlo method.
 
-During the dynamics, we focused on locating a spanning (or percolating) cluster in the network. This is again a math problem called percolation theory. In a numerical simulation, we can let the computer or the program identify such percolating cluster by an efficient tree-based algorithm by Newman (https://link.aps.org/doi/10.1103/PhysRevE.64.016706). 
+During the dynamics, we focused on locating a spanning (or percolating) cluster in the network. This is again a math problem called percolation theory. In a numerical simulation, we can make the computer identify such a percolating cluster using an efficient tree-based algorithm by Newman (https://link.aps.org/doi/10.1103/PhysRevE.64.016706). 
 
-I created this program in Python to simulate a whole random dynamic process. But remember, as a one probable process is only one possible copy. I have to simulate many copies for each set of parameters.
+I created this program in Python to simulate this stochastic dynamical process. But remember, as a one probable process is only one possible copy. I have to simulate many copies for each set of parameters.
 
 ##
 
