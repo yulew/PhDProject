@@ -1,7 +1,7 @@
 # Simulation Codes in PhD Project.
 ## Thesis Topic: Fracture dynamics of correlated percolation on polymer networks.
 
-My PhD project targeted studying fracture (crack) dynamics on a polymer network. A reader can find my article (https://journals.aps.org/pre/abstract/10.1103/PhysRevE.101.042603) and my thesis in this repository to have a general understanding.
+My PhD project targeted studying fracture (crack) dynamics on a polymer network. A reader can read my article (https://journals.aps.org/pre/abstract/10.1103/PhysRevE.101.042603) and my thesis in the repository "article and PhDthesis".
 
 The practical goal is to predict the lifetime of the polymer network. But as the fractures on a polymer network is a random network problem, the physical dynamics can be mapped to a mathematical random graph.
 
