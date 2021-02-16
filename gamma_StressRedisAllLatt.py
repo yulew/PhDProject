@@ -40,7 +40,7 @@ def BondNoneList(L):
 
 
 
-def DistanceMatrix(L, N, BondNone, ratio=1):  
+def DistanceMatrix(L, N, BondNone, ratio=1):
     Distance = np.empty((2 * N, 2 * N))
     for cell_i in range(0, N):
         for cell_j in range(0, N):
@@ -148,7 +148,7 @@ def StressRedisAllInit(L,N,sigma0,T,Ea,nu,tau0,k,gamma,ratio=1):
     Rate=RateList(Stress,nu,sigma0,rate0,T)
     return (Stress,Rate,F,rate0)
 
-def TrasFuncInit(L,gamma,ratio=1): #没用 StressRedisAllInit已经有了
+def TrasFuncInit(L,gamma,ratio=1):
     BondNone = BondNoneList(L)
     Distance = DistanceMatrix(L, N, BondNone,ratio)
     F = StressTransferFunction(gamma, Distance)

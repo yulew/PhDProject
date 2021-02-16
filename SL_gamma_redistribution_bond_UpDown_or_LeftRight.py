@@ -156,9 +156,9 @@ class RandomPercolation_SquareLattice_Bond:
         self.order = []
         self.lifetime = lifetime
         self.rate = rate
-        self.n = N_e  # for ElementFailNumber_tau(self) 计数，算t_b（还剩几个元素在 order_per里）
+        self.n = N_e
 
-        for i in range(N):  # N-1, not N, because the last one all [None,None] # 你忘了还要append label[i][1]了
+        for i in range(N):  
 
             self.order.append(label[i][0])
 
@@ -240,7 +240,7 @@ class CorrelatedPercolation_SquareLattice_Bond:
         if self.step > 80:
             self.FakeCancel=np.nanmax(self.Stress)-6*sigma0
 
-            if self.FakeCancel>4E9:
+            if self.FakeCancel > 4E9:
                 self.trigger = True
                 self.Stress = self.Stress-self.FakeCancel #the new stress is acutally a fake stress, but we do not care about it for a moment
                 self.Rate=RateList(self.Stress,nu,sigma0,self.rate0,T)
@@ -291,12 +291,11 @@ def percolate(RandomPerco=False):
     #####
     LatticeInit = SquareLatticeGraphC()
     for i in range(N_e):
-        ###别忘修改！！！！！！去掉testStress
+
         s1, tau,= PercoInit.ElementFailNumber_tau(nu,sigma0,i)
 
         breaking_time += tau
 
-        # ###去掉下面的
         # testRateList.append(testRate)
         # #####
 
@@ -310,7 +309,7 @@ def percolate(RandomPerco=False):
             else:
                 ptr1[s1] = m1
 
-        elif s1 in range(2 * N - 2 * L + 1 , 2 * N, 2): #这个是检查下boundar
+        elif s1 in range(2 * N - 2 * L + 1 , 2 * N, 2):
 
             if m2 == EMPTY1:
                 ptr1[s1] = -1
@@ -463,11 +462,10 @@ class SquareLatticeGraphC:
             weights = [self.Square[u][v]['weight'] for u,v in edges]
             colors = [self.Square[u][v]['color'] for u,v in edges]
             nx.draw(self.Square, self.pos,edges=edges, edge_color=colors,width=weights, node_size=3)
-        #plt.show()
-        #bond_index=[(x // (2 * L), (x % (2*L))//2, x%2) for x in orderOnly[0:200]]
+
         Filename=("L%s_stress%s_gamma%s_perco_%s_EitherSide_" %(L,sigma0,gamma,threshold))
         tim=strftime("%Y-%m-%d-%H-%M-%S", time.localtime(time.time()))
-        #dirc=("/Users/Yule/Documents/presentation/Committee_Meeting/png_animation/L%s_gamma%s_MC%s/" %(L,gamma,MC))
+
         dir="/Users/Yule/Documents/presentation/Committee_Meeting/"
         if not os.path.exists(dir):
             os.makedirs(dir)
