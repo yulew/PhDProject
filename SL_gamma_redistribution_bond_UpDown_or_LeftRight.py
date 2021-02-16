@@ -72,7 +72,7 @@ def Initialization_SquareLattice_Bond(L, N):
 
     def NearestNeighbourCorrelationInitiliaztion(N):
 
-                nn = []
+        nn = []
         for i in range(N - 1):
             if label[i][0] == None:
                 nn.append([None, [0, 0, 0, 0, 0, 0]])
@@ -147,11 +147,11 @@ def Initialization_SquareLattice_Bond(L, N):
     return (label, nn)
 
 
-# label,nn=Initialization_SquareLattice_Bond(L,N)
+
 
 class RandomPercolation_SquareLattice_Bond:
-    def __init__(self, label, lifetime=False, rate=None):  # (将来能否把None bond去掉，提高效率？）
-        # If lifetime==True, also will calculate lifetime.
+    def __init__(self, label, lifetime=False, rate=None):
+        # If lifetime == True, also will calculate lifetime.
         # Also, if lifetime is True, rate should be entered, otherwise raise Error.
         self.order = []
         self.lifetime = lifetime
@@ -161,7 +161,7 @@ class RandomPercolation_SquareLattice_Bond:
         for i in range(N):  # N-1, not N, because the last one all [None,None] # 你忘了还要append label[i][1]了
 
             self.order.append(label[i][0])
-            ### July14 add:
+
             self.order.append(label[i][1])
 
         if self.lifetime:  # correlated with self.ElementFailNumber_tau()
@@ -178,7 +178,7 @@ class RandomPercolation_SquareLattice_Bond:
 
     def ElementFailNumber_tau(self):
         # calculate lifetime
-        if self.lifetime:  # 为了节省速度，可以去掉if判断，直接在percolate（）里都取，但只输出一个，只是会浪费些计算lifetime时间
+        if self.lifetime:
             try:
                 rho1 = random.random()
                 t_b = -log(rho1) / (self.n * self.rate)
@@ -190,10 +190,10 @@ class RandomPercolation_SquareLattice_Bond:
         return (element_fail_number, t_b)
 
 
-class CorrelatedPercolation_SquareLattice_Bond:  # （改名叫KMCpercolation比较合适，因为有的inhomo,但相互独立）
+class CorrelatedPercolation_SquareLattice_Bond:
     # list rate0 contains a bunch of different rates; list percentage0 contains a bunch of corresponding percents
     # If homo, only rate0 is picked up. And no need to input percent; if inhomo, rate0 becomes a list,
-    # pick up all and list percentage0 from **karg.
+    # pick up all and list percentage0 from ** karg.
     def __init__(self,  homo=True, StressRedistribution=True, Stress0=None,Rate0=None,F0=None,rate0=None, **kwargs):  # rate0通常通过BreakingRateVsStress算出来
         self.StressRedistribution = StressRedistribution
         if self.StressRedistribution:
@@ -207,9 +207,9 @@ class CorrelatedPercolation_SquareLattice_Bond:  # （改名叫KMCpercolation比
         self.FakeCancel = 0
 
 
-    def kineticMC(self,nu,sigma0): #加chufa，加i
+    def kineticMC(self,nu,sigma0):
 
-        if self.trigger ==False: #如果不出现stress 过大情况，我们让程序正常走
+        if self.trigger == False:  # If stress is too large, rates may overflow. Therefore, we need to check whether it the stress is too large.
             sum_till_list = np.nancumsum(self.Rate)
             #print("Sum list:",sum_till_list[:40])
             rho1 = random.random()
@@ -219,7 +219,7 @@ class CorrelatedPercolation_SquareLattice_Bond:  # （改名叫KMCpercolation比
             ran_tot_rate = rho2 * sum_till_list[-1]
 
             self.element_fail_number = binarySearch(sum_till_list, ran_tot_rate)
-        else:  #否则stress过大，因为我们减了一个stress，生成假stress，所以self.t_b不能再按以前来了，直接=0。也可以让rho1 random出来一个，发现如果它大到10E300时，report一下，看看会不会出现这种情况
+        else:  # If stress is too large, we can cancell out stress to generate a new fake stress.
             sum_till_list = np.nancumsum(self.Rate)
             rho2 = random.random()
             ran_tot_rate = rho2 * sum_till_list[-1]
@@ -232,15 +232,15 @@ class CorrelatedPercolation_SquareLattice_Bond:  # （改名叫KMCpercolation比
 
         return (self.element_fail_number, self.t_b)
 
-    def StressRedis(self, element_fail_number,nu,sigma0):  # 把 i 加进去
+    def StressRedis(self, element_fail_number,nu,sigma0):
         self.Stress += self.FakeCancel
         (self.Rate,self.Stress,self.F)=StressRedisAllStep(self.Stress,self.F,element_fail_number,self.rate0,nu,sigma0,T) # Align up Stress with sigma, and align up Rate ith rate_list
 
-        # 如果self.Stress 里有至少一个超出一个额度，那个就全体减一个值
+        # if one of Stress matrix exceeds the threshold, then everyone cancell out a number
         if self.step > 80:
             self.FakeCancel=np.nanmax(self.Stress)-6*sigma0
 
-            if self.FakeCancel>4E9: #7E9已经挡住了很多问题，但是仍然出现了perco=1的情况了 我还试了3E8来调整精确度问题(程序变的很慢，而且似乎不是精确度问题）
+            if self.FakeCancel>4E9:
                 self.trigger = True
                 self.Stress = self.Stress-self.FakeCancel #the new stress is acutally a fake stress, but we do not care about it for a moment
                 self.Rate=RateList(self.Stress,nu,sigma0,self.rate0,T)
@@ -252,13 +252,10 @@ class CorrelatedPercolation_SquareLattice_Bond:  # （改名叫KMCpercolation比
 
 
         return self.Rate
-    def ElementFailNumber_tau(self,nu,sigma0,step): #问题出在ElementFailNumber_tau一直不停的run，由于已经断裂，所以上面的stress已经为NA，当然算出的StressAdd是满NAarray
+    def ElementFailNumber_tau(self,nu,sigma0,step):
         self.step = step
         self.kineticMC(nu,sigma0)
-        # # # print("Which breaks?:",self.element_fail_number)
-        # # # print("Rate:",self.Rate)
 
-        #####Return (self.element_fail_number,self.t_b,self.Rate)
         return (self.element_fail_number, self.t_b)
 
 
@@ -475,10 +472,7 @@ class SquareLatticeGraphC:
         if not os.path.exists(dir):
             os.makedirs(dir)
         plt.savefig(dir+Filename+tim+".png")
-        plt.clf() #clean 缓存
-        # with open("/Users/Yule/Documents/presentation/Committee_Meeting/"+Filename+tim+".txt",'w') as txtfile:
-        #     txtfile.write(str(bond_index))
-        #     txtfile.close()
+        plt.clf()
 
 
 
@@ -493,17 +487,13 @@ if __name__ == "__main__":
         File.write(str(perco_proportion)+"\n\n")
         File.write("Break time:\n\n")
         File.write(str(break_time)+"\n\n")
-        #File.write("Break order and time order:\n\n")
-        #File.write(str(Order_TimeList)+"\n\n")
         File.close()
 
         filename = ("OrderTime_stress_%s_gamma_%s_L_%s_" %(sigma0,gamma,L))
         dir=("/Users/Yule/Documents/PYTHON/Fracture_stress_redistribution/RedistriAll_gamma/data_bond_SL/"+filename+strftime("%Y-%m-%d-%H-%M-%S", time.localtime(time.time())))
         with open(dir, 'wb') as file_order:
             pickle.dump(Order_TimeList, file_order, protocol=pickle.HIGHEST_PROTOCOL)
-        # with open(dir, 'rb') as file_order:
-        #     f=pickle.load(file_order)
-        #     print(f)
+
 
     def save_file(Order_TimeList,gamma=None,sigma0=None,ratio=None,SiteOrBond=None,EihterSide=None,lattice=None,L=None,MC=None):
         filename = '%s_L_%s_sigma0_%s_gamma_%s_ratio_%s_times_%s.pickle' %(lattice,L,sigma0,gamma,ratio,(MC+1))
@@ -511,44 +501,7 @@ if __name__ == "__main__":
             os.makedirs('./data_order_time/%s_%s_%s/' %(SiteOrBond,lattice,EihterSide))
         with open(('./data_order_time/%s_%s_%s/' %(SiteOrBond,lattice,EihterSide))+filename, 'wb') as file:
             pickle.dump(Order_TimeList, file, protocol = pickle.HIGHEST_PROTOCOL)
-    for sigma0 in [6E6]:#
-        for gamma in [100]:#[0,1,2,5,10,20]:#
-            for ratio in [1]:
-                L = 50
-                N = L ** 2
-                N_e = 2 * N - 2 * L
-                k = 1
-                T = 298
-                Ea = 117.15 * 10 ** 3 / (6.02214 * 10 ** 23)
-                nu = 418 * 10 ** (-30)
-                tau0 = 10 ** (-11)
-                #sigma0 = 6E6
-                #gamma=20
-                label, nn = Initialization_SquareLattice_Bond(L, N)
 
-                (Stress0,Rate0,F0,rate0) = StressRedisAllInit(L,N,sigma0,T,Ea,nu,tau0,k,gamma,ratio)
-                perco_proportion = []  # Do not Forget put those as variables into functions!
-                break_time = []
-                Order_TimeList = []
-
-                ptr1 = [0] * 2 * N
-                ptr2 = [0] * 2 * N
-                try:
-                    for MC in range(1,11): #1500
-
-                        (threshold,breaking_time,Order_Time)=percolate(RandomPerco=False)
-                        perco_proportion.append(threshold)
-                        break_time.append(breaking_time)
-                        Order_TimeList.append(Order_Time)
-                        print(MC)
-
-                finally:
-                    print(perco_proportion)
-                    GaussianGraphSave(perco_proportion,break_time,gamma,sigma0,ratio,'bond','OneSide','SL',L,MC)
-                    #save_file()
-
-
-            #print(Order_TimeList)
 
 
 end = time.time()
