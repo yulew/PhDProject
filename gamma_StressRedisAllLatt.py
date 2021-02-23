@@ -21,7 +21,7 @@ from Modularization_SL_Corre_Uncorre import BreakingRateVsStress
 
 
 
-# 6%4=2 (横轴index) 6//4=1  (纵轴index）
+# 6%4=2 (horizontal index) 6//4=1  (vertical index）
 
 import math
 import os

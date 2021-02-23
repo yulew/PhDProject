@@ -158,7 +158,7 @@ class RandomPercolation_SquareLattice_Bond:
         self.rate = rate
         self.n = N_e
 
-        for i in range(N):  
+        for i in range(N):
 
             self.order.append(label[i][0])
 
@@ -194,7 +194,7 @@ class CorrelatedPercolation_SquareLattice_Bond:
     # list rate0 contains a bunch of different rates; list percentage0 contains a bunch of corresponding percents
     # If homo, only rate0 is picked up. And no need to input percent; if inhomo, rate0 becomes a list,
     # pick up all and list percentage0 from ** karg.
-    def __init__(self,  homo=True, StressRedistribution=True, Stress0=None,Rate0=None,F0=None,rate0=None, **kwargs):  # rate0通常通过BreakingRateVsStress算出来
+    def __init__(self,  homo=True, StressRedistribution=True, Stress0=None,Rate0=None,F0=None,rate0=None, **kwargs):  # rate0 can be calculated through BreakingRateVsStress
         self.StressRedistribution = StressRedistribution
         if self.StressRedistribution:
 
