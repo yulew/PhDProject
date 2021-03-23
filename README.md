@@ -8,7 +8,7 @@ The practical goal was to forcast the lifetime of polymer networks. But as the f
 
 As the random fracture process is a Markov process also, in which the random fracture events exhibit correlations in the time-series processes. Thus, the fracture dynamics can be numerically simulated with a kinetic Monte Carlo method.
 
-During the dynamics, we focused on locating a spanning (or percolating) cluster in the network. This is again a math problem called percolation theory. In a numerical simulation, we can make the computer identify such a percolating cluster using an efficient tree-based algorithm by Newman (https://link.aps.org/doi/10.1103/PhysRevE.64.016706). 
+During the dynamics, we focused on locating a spanning (or percolating) cluster in the network. This is again a math problem called percolation theory, which has been applied to study various random dynamics problems, such as epidemic spread. In a numerical simulation, we can make the computer identify such a percolating cluster using an efficient tree-based algorithm by Newman (https://link.aps.org/doi/10.1103/PhysRevE.64.016706). 
 
 I created this program in Python to simulate the stochastic dynamical fracture process. But remember, an same initial configuration of a polymer network can evolve to many possible different random processes or trajectories. If we call one random trajectory as a random copy, I have to simulate many copies for each configuration. In the end, we will have a probability distribution of a lifetime of a polymer network.
 
